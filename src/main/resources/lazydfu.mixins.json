@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.steinborn.lazydfu.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "SchemasMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
