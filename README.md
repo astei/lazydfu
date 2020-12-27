@@ -26,3 +26,8 @@ LazyDFU takes a similar implementation approach to Smooth Boot: both mods do not
 However, LazyDFU is superior to Smooth Boot as it does not compile DFU rules at all, which is the most
 expensive part of the game startup process.
 
+### DataBreaker
+
+**DataBreaker is fundamentally unsafe**. If you load an older world with DataBreaker then **it will corrupt
+that world**. In comparison, with LazyDFU you may experience a nasty lag spike instead, but that is probably
+vastly superior to having a completely hosed world. So prefer LazyDFU over DataBraker :)
