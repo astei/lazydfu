@@ -29,5 +29,6 @@ expensive part of the game startup process.
 ### DataBreaker
 
 **DataBreaker is fundamentally unsafe**. If you load an older world with DataBreaker then **it will corrupt
-that world**. In comparison, with LazyDFU you may experience a nasty lag spike instead, but that is probably
-vastly superior to having a completely hosed world. So prefer LazyDFU over DataBraker :)
+that world**. There's some safeguards in DataBreaker, but even the author does not recommend using DataBreaker.
+In comparison, with LazyDFU you may experience a nasty lag spike instead, which is vastly superior to having a
+completely hosed world. So prefer LazyDFU over DataBreaker :)
