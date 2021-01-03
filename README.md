@@ -12,19 +12,32 @@ of the game. As a result, DFU rule compilation occurs later, when the game is al
 This means it is possible you may see lag spikes if LazyDFU forces the game to compile migration rules,
 but once complete there is no performance penalty.
 
+## Give me the numbers!
+
+On an i5-8250U laptop:
+
+* Vanilla: ~58 seconds spent initializing DFU and compiling DFU rules
+* LazyDFU: 498 **milliseconds** sent initializing DFU
+
+This results in a smooth, responsive game startup.
+
 ## Comparing it to other mods
 
 ### Cadmium
 
-LazyDFU is complementary to Cadmium. In fact, Cadmium tackles the root source of the problem and is
-superior to LazyDFU. Still, LazyDFU will defer the initial compilation of DFU rules until needed,
-so the game will start up much more quickly (especially on lower end systems).
+LazyDFU is complementary to Cadmium. While Cadmium tackles the root source of the problem (rule
+optimization being slow), it only partially improves the situation. LazyDFU will still be highly
+effective by deferring the initial compilation of DFU rules until needed, so the game will start
+up much more quickly.
 
 ### Smooth Boot
 
 LazyDFU takes a similar implementation approach to Smooth Boot: both mods do not try to modify DFU.
 However, LazyDFU is superior to Smooth Boot as it does not compile DFU rules at all, which is the most
 expensive part of the game startup process.
+
+In comparison, Smooth Boot will instead limit the number of threads that compile DFU rules and run them
+at a lower priority.
 
 ### DataBreaker
 
