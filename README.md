@@ -1,7 +1,5 @@
 # LazyDFU
 
-**Experimental**: It should be safe, but please backup worlds that are important to you before using LazyDFU.
-
 LazyDFU is an optimization mod that makes the initialization of DataFixerUpper "lazy" - that is, it
 will not immediately create the rules required to migrate data from older versions of Minecraft to
 newer versions until it actually needs to do so. It does not modify DFU and should be safe, but do
