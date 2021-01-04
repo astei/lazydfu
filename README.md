@@ -21,6 +21,10 @@ On an i5-8250U laptop:
 
 This results in a smooth, responsive game startup.
 
+## I want to see to believe it!
+
+[Here's a video I recorded](https://www.youtube.com/watch?v=gXDqJ598kKA).
+
 ## Comparing it to other mods
 
 ### Cadmium
