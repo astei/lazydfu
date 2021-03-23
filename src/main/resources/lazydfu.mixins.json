@@ -3,6 +3,8 @@
   "minVersion": "0.8",
   "package": "me.steinborn.lazydfu.mixin",
   "compatibilityLevel": "JAVA_8",
+  "refmap": "lazydfu.refmap.json",
+
   "mixins": [
     "SchemasMixin"
   ],
