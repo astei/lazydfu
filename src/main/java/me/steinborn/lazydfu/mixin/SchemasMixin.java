@@ -1,21 +1,13 @@
 package me.steinborn.lazydfu.mixin;
 
-import com.mojang.datafixers.DataFixer;
 import com.mojang.datafixers.DataFixerBuilder;
 import me.steinborn.lazydfu.mod.LazyDataFixerBuilder;
-import net.minecraft.datafixer.Schemas;
-import net.minecraft.util.Util;
+import net.minecraft.util.datafix.DataFixesManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.TimeUnit;
-
-@Mixin(Schemas.class)
+@Mixin(DataFixesManager.class)
 public class SchemasMixin {
 //    private static long startTime;
 //
@@ -24,7 +16,7 @@ public class SchemasMixin {
 //        startTime = System.nanoTime();
 //    }
 
-    @Redirect(method = "create", at = @At(value = "NEW", target = "com/mojang/datafixers/DataFixerBuilder"))
+    @Redirect(method = "createFixerUpper", at = @At(value = "NEW", target = "com/mojang/datafixers/DataFixerBuilder"))
     private static DataFixerBuilder create$replaceBuilder(int dataVersion) {
         return new LazyDataFixerBuilder(dataVersion);
     }

@@ -1,0 +1,21 @@
+modLoader = "javafml"
+loaderVersion = "[33,)"
+license = "MIT"
+issueTrackerURL = "https://github.com/CorgiTaco/lazydfu/issues"
+[[mods]]
+modId = "lazydfu"
+version = "0.1.3"
+displayName = "LazyDFU"
+displayURL = "https://www.curseforge.com/minecraft/mc-mods/lazy-dfu-forge"
+logoFile = "assets/lazydfu/icon.png"
+credits = "Port to Forge: Corgi Taco"
+authors = "tuxed"
+description = '''
+Makes DataFixerUpper more lazy
+'''
+[[dependencies.lazydfu]]
+modId = "forge"
+mandatory = true
+versionRange = "[33.0.0,)"
+ordering = "NONE"
+side = "BOTH"
