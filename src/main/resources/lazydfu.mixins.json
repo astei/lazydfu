@@ -6,8 +6,6 @@
   "mixins": [
     "SchemasMixin"
   ],
-  "client": [
-  ],
   "injectors": {
     "defaultRequire": 1
   }
