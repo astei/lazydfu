@@ -7,7 +7,11 @@
   "authors": [
     "tuxed"
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://github.com/astei/lazydfu",
+    "sources": "https://github.com/astei/lazydfu",
+    "issues": "https://github.com/astei/lazydfu/issues"
+  },
   "license": "MIT",
   "icon": "assets/lazydfu/icon.png",
   "environment": "*",
