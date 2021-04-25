@@ -1,4 +1,4 @@
-name: LazyDFU build scripy
+name: LazyDFU build script
 
 on:
   push:
