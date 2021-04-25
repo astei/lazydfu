@@ -1,0 +1,48 @@
+name: LazyDFU build scripy
+
+on:
+  push:
+  pull_request:
+jobs:
+  validation:
+    name: "Gradle Wrapper Validation"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: gradle/wrapper-validation-action@v1
+      
+  build:
+    needs: validation
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ '8', '11', '16' ]
+      fail-fast: false
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK ${{ matrix.Java }}
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'    
+        java-version: ${{ matrix.java }}
+        
+    - name: Pull Gradle Cache
+      uses: actions/cache@v2
+      id: gradle-cache
+      with:
+        path: ~/.gradle
+        key: ${{ runner.os }}-mavenCache-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}-openjdk-${{ matrix.java }}
+            
+    - name: Build
+      run: |
+         git config --global user.email "ci@github.com"
+         git config --global user.name "Github CI"
+         git config --global gc.auto 0
+         sudo chmod -R -f 777 ./gradlew
+         ./gradlew clean build
+        
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: LazyDFU-jdk-${{ matrix.java }}
+        path: build/libs/
