@@ -4,7 +4,7 @@
   "package": "me.steinborn.lazydfu.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "SchemasMixin"
+    "DataFixersMixin"
   ],
   "client": [
   ],
