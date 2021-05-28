@@ -1,5 +1,9 @@
 plugins {
-    id 'fabric-loom' version '0.8-SNAPSHOT'
+    // To any contributors: Don't even think to bump this just so you can "build on Java 15 or higher." LazyDFU supports
+    // a wide range of Minecraft versions. It's not worth bumping this. Just use Java 8 or 11, they're going to be
+    // supported for a good while still. Any PRs opened to require Java 15 or higher to build LazyDFU will be closed
+    // swiftly and mercilessly.
+    id 'fabric-loom' version '0.6-SNAPSHOT'
     id 'maven-publish'
 }
 
