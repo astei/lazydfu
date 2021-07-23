@@ -15,7 +15,7 @@ but once complete there is no performance penalty.
 On an i5-8250U laptop:
 
 * Vanilla: ~58 seconds spent initializing DFU and compiling DFU rules
-* LazyDFU: 498 **milliseconds** sent initializing DFU
+* LazyDFU: 498 **milliseconds** spent initializing DFU
 
 This results in a smooth, responsive game startup.
 
