@@ -2,12 +2,12 @@ package me.steinborn.lazydfu.mixin;
 
 import com.mojang.datafixers.DataFixerBuilder;
 import me.steinborn.lazydfu.mod.LazyDataFixerBuilder;
-import net.minecraft.util.datafix.DataFixesManager;
+import net.minecraft.util.datafix.DataFixers;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(DataFixesManager.class)
+@Mixin(DataFixers.class)
 public class SchemasMixin {
 //    private static long startTime;
 //

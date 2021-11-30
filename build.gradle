@@ -4,26 +4,28 @@ buildscript {
         jcenter()
         mavenCentral()
         maven {url='https://repo.spongepowered.org/repository/maven-public/'}
-
-
+        maven {url='https://maven.parchmentmc.org/'}
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
 
 version = "${mod_version}"
-group = "tuxed.${modid}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = "corgitaco.${modid}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "${modid}"
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+java.toolchain.languageVersion = JavaLanguageVersion.of(16)
 
 minecraft {
-    mappings channel: "official", version: "${mc_version}"
+    mappings("parchment", "${property("mappingsVersion")}-$mc_version")
 
 //    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -60,7 +62,8 @@ minecraft {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
-//    annotationProcessor 'org.spongepowered:mixin:0.8.2:processor' //Re-enable when building jar
+    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor' //Re-enable when building jar
+    implementation("org.parchmentmc:librarian:1.+")
 }
 
 jar {
@@ -77,6 +80,20 @@ jar {
         ])
     }
 }
+
+
+////////////////
+// IntelliJ Project Import
+// The Mixin annotation process does not have an obfuscation source when running through the IntelliJ compiler,
+// thus we have to prevent it from being activated as part of importing this Gradle project into IntelliJ.
+if (System.getProperty("idea.sync.active") == "true") {
+    afterEvaluate {
+        tasks.withType(JavaCompile).all {
+            it.options.annotationProcessorPath = files()
+        }
+    }
+}
+
 
 // Example configuration to allow publishing using the maven-publish task
 // This is the preferred method to reobfuscate your jar file
@@ -99,8 +116,6 @@ publishing {
         }
     }
 }
-
-apply plugin: 'org.spongepowered.mixin'
 
 mixin {
     add sourceSets.main, "${modid}.refmap.json"
