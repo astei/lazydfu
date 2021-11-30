@@ -4,16 +4,16 @@ buildscript {
         jcenter()
         mavenCentral()
         maven {url='https://repo.spongepowered.org/repository/maven-public/'}
-        maven {url='https://maven.parchmentmc.org/'}
+//        maven {url='https://maven.parchmentmc.org/'}
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
-        classpath 'org.parchmentmc:librarian:1.+'
+//        classpath 'org.parchmentmc:librarian:1.+'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
+//apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
@@ -22,10 +22,11 @@ version = "${mod_version}"
 group = "corgitaco.${modid}" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "${modid}"
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(16)
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-    mappings("parchment", "${property("mappingsVersion")}-$mc_version")
+//    mappings("parchment", "${property("mappingsVersion")}-$mc_version")
+    mappings("official", "$mc_version")
 
 //    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -63,7 +64,7 @@ minecraft {
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor' //Re-enable when building jar
-    implementation("org.parchmentmc:librarian:1.+")
+//    implementation("org.parchmentmc:librarian:1.+")
 }
 
 jar {
