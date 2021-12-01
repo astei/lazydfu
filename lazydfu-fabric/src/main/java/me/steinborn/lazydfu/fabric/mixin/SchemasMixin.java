@@ -1,7 +1,7 @@
-package me.steinborn.lazydfu.mixin;
+package me.steinborn.lazydfu.fabric.mixin;
 
 import com.mojang.datafixers.DataFixerBuilder;
-import me.steinborn.lazydfu.mod.LazyDataFixerBuilder;
+import me.steinborn.lazydfu.fabric.mod.LazyDataFixerBuilder;
 import net.minecraft.datafixer.Schemas;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

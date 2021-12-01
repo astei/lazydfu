@@ -7,3 +7,9 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+rootProject.name = 'lazydfu'
+include(
+        'lazydfu-fabric',
+        'lazydfu-forge'
+)

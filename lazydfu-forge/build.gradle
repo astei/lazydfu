@@ -1,0 +1,86 @@
+buildscript {
+    repositories {
+        maven { url = "https://maven.minecraftforge.net" }
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.spongepowered.mixin'
+
+tasks.withType(JavaCompile) {
+    // override, compile targeting J16
+    options.release = 16
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.17'
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+}
+
+mixin {
+    add sourceSets.main, "lazydfu.refmap.json"
+    config "lazydfu.mixins.json"
+
+    debug.verbose = true
+    debug.export = true
+}
+
+minecraft {
+    runs {
+        client {
+            workingDirectory project.file('run/client')
+            property 'forge.logging.console.level', 'debug'
+            args '-mixin.config=lazydfu.mixins.json'
+
+            mods {
+                lazydfu {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run/server')
+            property 'forge.logging.console.level', 'debug'
+            args '-nogui', '-mixin.config=lazydfu.mixins.json'
+
+            mods {
+                lazydfu {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.17.1-37.1.0'
+    annotationProcessor 'org.spongepowered:mixin:0.8.3:processor'
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        include 'META-INF/mods.toml'
+        expand (
+                'version': project.mod_version,
+        )
+    }
+
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'META-INF/mods.toml'
+    }
+}
+
+jar {
+    manifest {
+        attributes([
+                "MixinConfigs": "lazydfu.mixins.json"
+        ])
+    }
+}

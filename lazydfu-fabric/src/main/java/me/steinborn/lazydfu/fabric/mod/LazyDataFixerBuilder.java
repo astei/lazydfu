@@ -1,4 +1,4 @@
-package me.steinborn.lazydfu.mod;
+package me.steinborn.lazydfu.fabric.mod;
 
 import com.mojang.datafixers.*;
 
