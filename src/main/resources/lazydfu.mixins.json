@@ -2,9 +2,9 @@
   "required": true,
   "minVersion": "0.8",
   "package": "me.steinborn.lazydfu.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "SchemasMixin"
+    "SharedConstantsMixin"
   ],
   "client": [
   ],
