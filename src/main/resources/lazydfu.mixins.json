@@ -4,9 +4,8 @@
   "package": "me.steinborn.lazydfu.mixin",
   "compatibilityLevel": "JAVA_16",
   "refmap": "lazydfu.refmap.json",
-
   "mixins": [
-    "SchemasMixin"
+    "SharedConstantsMixin"
   ],
   "client": [
   ],

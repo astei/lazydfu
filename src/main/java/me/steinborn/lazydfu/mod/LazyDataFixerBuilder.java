@@ -16,7 +16,7 @@ public class LazyDataFixerBuilder extends DataFixerBuilder {
     }
 
     @Override
-    public DataFixer build(Executor executor) {
-        return super.build(NO_OP_EXECUTOR);
+    public DataFixer buildOptimized(Executor executor) {
+        return super.buildOptimized(NO_OP_EXECUTOR);
     }
 }
