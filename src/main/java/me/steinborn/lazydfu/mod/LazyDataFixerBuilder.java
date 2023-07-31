@@ -2,6 +2,7 @@ package me.steinborn.lazydfu.mod;
 
 import com.mojang.datafixers.*;
 
+import java.util.Set;
 import java.util.concurrent.Executor;
 
 /**
@@ -16,7 +17,7 @@ public class LazyDataFixerBuilder extends DataFixerBuilder {
     }
 
     @Override
-    public DataFixer buildOptimized(Executor executor) {
-        return super.buildOptimized(NO_OP_EXECUTOR);
+    public DataFixer buildOptimized(final Set<DSL.TypeReference> requiredTypes, final Executor executor) {
+        return super.buildOptimized(requiredTypes, NO_OP_EXECUTOR);
     }
 }
